@@ -1,9 +1,23 @@
+---
+title: CritiQuest
+emoji: 🧠
+colorFrom: blue
+colorTo: green
+sdk: gradio
+sdk_version: 4.44.0
+app_file: app.py
+pinned: false
+license: mit
+short_description: Socratic critical-thinking coach for ages 8-14 (portfolio demo)
+---
+
 # CritiQuest
 
-**Personal portfolio product** — a zero-cost Socratic critical-thinking chatbot for ages **8–14** (school / tablet / mobile-web).  
-Built by **Allan Harold Rex** (Senior Conversational Experience Designer, IBM) as ownership evidence for a GenAI / Conversational AI Product Manager transition.
+A **zero-cost** Socratic critical-thinking chatbot for ages **8–14** (school / tablet / mobile-web).
 
-> CritiQuest is **not a company**. No revenue claims. No fabricated user counts or traction metrics.
+CritiQuest coaches students by asking questions — it is not a homework answer engine.
+
+> Personal portfolio product. Not a company. No revenue claims. No fabricated user counts.
 
 ---
 
@@ -17,9 +31,9 @@ Homework helpers and chatbots often **answer for** students. That undermines the
 |--------|------|
 | Students 8–14 | Practice thinking without being handed answers |
 | Teachers | Oversight: what was discussed, safety flags, skill signals (mocked in MVP) |
-| School admin (later) | Policy, accounts, reporting — **out of scope** for MVP (story only) |
+| School admin (later) | Policy, accounts, reporting — **out of scope** for MVP |
 
-## Design principles (Socratic CX)
+## Design principles
 
 1. **Questions over answers** — most turns end in a question; never default to the solution.
 2. **Scaffolded phases** — Clarify → Assumptions → Evidence → Alternatives → Implications → Reflect.
@@ -57,10 +71,6 @@ critiquest/
 cd critiquest
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-
-# Optional: Ollama with a small model
-# ollama pull llama3.2:3b
-
 python app.py
 ```
 
@@ -75,24 +85,22 @@ Tests:
 
 ```bash
 python -m pytest tests/ -q
-# or without pytest:
-python tests/test_safety_engine.py  # import checks via pytest recommended
+# or:
+python tests/test_safety_engine.py
 ```
 
-## Hugging Face Spaces
+## Deploy (free)
 
-1. Create a Gradio Space; upload this folder (`app.py` at root of the Space or adjust path).
-2. Set `requirements.txt` as above.
-3. Optional: add `GROQ_API_KEY` as a Space secret for free Llama inference.
-4. App entry: `app.py` exposes `demo` for Spaces; locally use `python app.py`.
+- **Render free web service:** set start command to `python app.py` (listens on `$PORT`).
+- Optional: set `GROQ_API_KEY` as an environment variable for free Llama inference.
 
 ## Metrics we *would* track (not claimed as live KPIs)
 
-- % of turns ending in a question  
-- Phase progression depth per session  
-- Safety flag rate (by category)  
-- Teacher-view open rate (if shipped)  
-- Qualitative: “did this help me think?” exit pulse  
+- % of turns ending in a question
+- Phase progression depth per session
+- Safety flag rate (by category)
+- Teacher-view open rate (if shipped)
+- Qualitative: “did this help me think?” exit pulse
 
 ## Trade-offs
 
@@ -101,22 +109,16 @@ python tests/test_safety_engine.py  # import checks via pytest recommended
 | Heuristic fallback | Reliable zero-key demo | Less flexible than a strong LLM |
 | Keyword safety | Transparent, free, fast | Needs ongoing list maintenance; not a full classifier |
 | Mock teacher view | Shows oversight story without SSO | Not real classroom analytics |
-| Gradio + HF | Free public demo, mobile browser | Cold starts; limited branding |
+| Free hosting | Public demo on a budget | Cold starts; limited branding |
 
 ## Next phase (with a team)
 
 Curriculum-aligned topic packs, real teacher auth, evaluation rubrics for reasoning moves, district privacy review, and A/B on phase timing — still **questions-first**.
 
-## Walkthrough script (2–3 min Loom)
+## Walkthrough script (2–3 min)
 
-1. Disclosure + age 11–12 + topic “Is every YouTube video true?”  
-2. Student says videos “look real” → show evidence-phase question.  
-3. Toggle teacher view (phase + mock skills + flags).  
-4. Try “just tell me the answer” → jailbreak refusal.  
-5. Close on principles: ownership of CX + safety + zero-cost stack.
-
----
-
-### Portfolio note
-
-IBM remains primary professional proof. CritiQuest is **ownership** proof for conversational / GenAI PM interviews. Do not list CritiQuest as an employer on LinkedIn.
+1. Disclosure + age 11–12 + topic “Is every YouTube video true?”
+2. Student says videos “look real” → show evidence-phase question.
+3. Toggle teacher view (phase + mock skills + flags).
+4. Try “just tell me the answer” → jailbreak refusal.
+5. Close on product principles: questions-first, child safety, zero-cost stack.
