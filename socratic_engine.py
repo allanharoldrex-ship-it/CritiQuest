@@ -13,8 +13,11 @@ import requests
 from prompts import (
     PHASES,
     TOPIC_SEEDS,
+    DISCLOSURE,
     build_messages,
     get_topic_by_title,
+    opening_question,
+    is_under18,
 )
 from safety import check_input, check_output
 
@@ -25,6 +28,7 @@ SKILL_KEYS = ("curiosity", "evidence", "perspective", "reflection")
 @dataclass
 class SessionState:
     age_band: str = "11-12"
+    segment: str = "middle"
     topic: str = TOPIC_SEEDS[0]["title"]
     phase: str = "clarify"
     phase_index: int = 0
@@ -45,6 +49,7 @@ class SessionState:
             return cls()
         return cls(
             age_band=data.get("age_band", "11-12"),
+            segment=data.get("segment", "middle"),
             topic=data.get("topic", TOPIC_SEEDS[0]["title"]),
             phase=data.get("phase", "clarify"),
             phase_index=int(data.get("phase_index", 0)),
@@ -56,7 +61,7 @@ class SessionState:
         )
 
 
-# Heuristic question banks by phase (used when no LLM available).
+# Heuristic question banks by phase (used when no model is available).
 _HEURISTIC: dict[str, list[str]] = {
     "clarify": [
         "What part of '{topic}' matters most to you right now?",
@@ -69,7 +74,7 @@ _HEURISTIC: dict[str, list[str]] = {
         "Is there a hidden 'always' or 'never' in your thinking about '{topic}'?",
     ],
     "evidence": [
-        "What evidence would convince you — and what wouldn't?",
+        "What evidence would convince you, and what wouldn't?",
         "Where did that idea come from, and how could you check it?",
         "What's one thing you could measure or compare about '{topic}'?",
     ],
@@ -86,7 +91,7 @@ _HEURISTIC: dict[str, list[str]] = {
     "reflect": [
         "How has your thinking shifted since we started on '{topic}'?",
         "What question would you ask next on your own?",
-        "Which mattered more just now — evidence, another viewpoint, or clarifying the question?",
+        "Which mattered more just now: evidence, another viewpoint, or clarifying the question?",
     ],
 }
 
@@ -98,7 +103,7 @@ _CUE_QUESTIONS: list[tuple[str, str, str]] = [
     (r"\b(video|youtube|professional|views|click|creator|headline|ad|ads)\b", "evidence",
      "What would you check beyond how it looks or how popular it is?"),
     (r"\b(rule|rules|fair|mean|meanies|allowed|should)\b", "perspective",
-     "Fair for whom — and who might say that rule isn't fair?"),
+     "Fair for whom, and who might say that rule isn't fair?"),
     (r"\b(source|sources|research|researched|prove|proof|evidence)\b", "evidence",
      "What would count as strong evidence here, not just a confident voice?"),
     (r"\b(exaggerate|rumor|true|false|believe|trust)\b", "perspective",
@@ -250,19 +255,17 @@ def advance_phase(state: SessionState, force: bool = False) -> SessionState:
     return state
 
 
-def opening_message(age_band: str, topic: str) -> str:
-    meta = get_topic_by_title(topic)
-    seed = meta["seed"] if meta else f"Exploring: {topic}"
-    disclosure = "I'm CritiQuest — an AI that helps you think by asking questions."
-    if age_band == "8-10":
-        return (
-            f"{disclosure} Today we're exploring: **{topic}**. "
-            f"{seed.split('.')[0]}. What do you already think about this?"
-        )
-    return (
-        f"{disclosure} Topic: **{topic}**. {seed} "
-        "What's your first take — and what makes you think that?"
+def opening_message(age_band: str, topic: str, segment: str | None = None) -> str:
+    seg = segment or (
+        "middle" if age_band in ("8-10", "11-12")
+        else "teens" if age_band in ("13-14", "15-17")
+        else "early_adult" if age_band == "18-24"
+        else "adult" if age_band == "25-64"
+        else "unhurried" if age_band == "65+"
+        else "middle"
     )
+    q = opening_question(seg)
+    return f"{DISCLOSURE} Topic: **{topic}**. {q}"
 
 
 def teacher_summary(state: SessionState) -> str:
@@ -272,6 +275,7 @@ def teacher_summary(state: SessionState) -> str:
     return (
         f"**Teacher view (mock)**\n"
         f"- Topic: {state.topic}\n"
+        f"- Segment: {getattr(state, 'segment', '')}\n"
         f"- Age band: {state.age_band}\n"
         f"- Phase: {state.phase} ({state.phase_index + 1}/{len(PHASES)})\n"
         f"- Learner turns: {turns}\n"
@@ -287,11 +291,14 @@ def respond(
     state: SessionState | dict | None = None,
     age_band: str | None = None,
     topic: str | None = None,
+    segment: str | None = None,
 ) -> tuple[str, SessionState]:
     """Main turn handler. Returns (assistant_text, updated_state)."""
     st = state if isinstance(state, SessionState) else SessionState.from_dict(state)
     if age_band:
         st.age_band = age_band
+    if segment:
+        st.segment = segment
     if topic:
         st.topic = topic
 
@@ -302,7 +309,7 @@ def respond(
         st.history.append({"role": "assistant", "content": safety_in.message})
         return safety_in.message, st
 
-    messages = build_messages(st.age_band, st.phase, st.topic, st.history, user_message)
+    messages = build_messages(st.age_band, st.phase, st.topic, st.history, user_message, segment=getattr(st, 'segment', None))
     llm_text, backend = _call_llm(messages)
     st.backend = backend
 
@@ -317,7 +324,7 @@ def respond(
         reply = safety_out.message
     else:
         reply = _ensure_question(reply)
-        # Heuristic skill bumps when LLM path used
+        # Heuristic skill bumps when model path used
         if backend != "heuristic":
             st.skills["curiosity"] = st.skills.get("curiosity", 0) + 1
             if st.phase == "evidence":

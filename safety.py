@@ -29,7 +29,7 @@ _BLOCK_PATTERNS: list[tuple[str, re.Pattern[str], str]] = [
         ),
         (
             "I'm really glad you said something. I'm not the right helper for hard feelings "
-            "like that — please talk to a trusted adult, or a parent/guardian, right away. "
+            "like that. Please talk to a trusted adult, or a parent/guardian, right away. "
             "If you're in the U.S., you can also call or text 988. "
             "When you're ready, we can explore a thinking topic together."
         ),
@@ -43,7 +43,7 @@ _BLOCK_PATTERNS: list[tuple[str, re.Pattern[str], str]] = [
         ),
         (
             "I can't help with anything that could hurt people. "
-            "Want to pick a thinking topic instead — like fairness, science, or media literacy?"
+            "Want to pick a thinking topic instead, like fairness, science, or media literacy?"
         ),
     ),
     (
@@ -53,7 +53,7 @@ _BLOCK_PATTERNS: list[tuple[str, re.Pattern[str], str]] = [
             re.I,
         ),
         (
-            "That's not a topic I discuss. CritiQuest is for thinking skills — "
+            "That's not a topic I discuss. CritiQuest is for thinking skills: "
             "science, fairness, media literacy, and similar school-safe questions."
         ),
     ),
@@ -67,7 +67,7 @@ _BLOCK_PATTERNS: list[tuple[str, re.Pattern[str], str]] = [
         ),
         (
             "I don't share or ask for private personal details. "
-            "Let's keep exploring ideas — what's a claim you're curious about?"
+            "Let's keep exploring ideas. What's a claim you're curious about?"
         ),
     ),
     (
@@ -79,7 +79,7 @@ _BLOCK_PATTERNS: list[tuple[str, re.Pattern[str], str]] = [
             re.I,
         ),
         (
-            "I'm CritiQuest — an AI that helps you think by asking questions, not a friend or companion. "
+            "I'm CritiQuest. I help you think by asking questions, not by being a friend or companion. "
             "What idea about the topic do you want to examine first?"
         ),
     ),
@@ -133,7 +133,7 @@ def check_input(text: str) -> SafetyResult:
 def check_output(text: str) -> SafetyResult:
     """Second-pass on model output: block companion tone / blunt answer dumps."""
     if not text:
-        return SafetyResult(ok=False, category="empty", message="Let's try that again — what do you think so far?")
+        return SafetyResult(ok=False, category="empty", message="Let's try that again. What do you think so far?")
 
     flags: list[str] = []
     if _COMPANION_OUT.search(text):
@@ -142,7 +142,7 @@ def check_output(text: str) -> SafetyResult:
             ok=False,
             category="companion_tone",
             message=(
-                "I'm CritiQuest — an AI that helps you think by asking questions. "
+                "I'm CritiQuest. I help you think by asking questions, not by giving the answer. "
                 "What evidence would make you more confident in your idea?"
             ),
             flags=flags,
