@@ -23,7 +23,7 @@ SEGMENTS = {
         "hero": "Pick a topic. I ask. You think.",
         "pill": "I ask. You think.",
         "cta": "Let's begin",
-        "empty": "Pick a topic, then Let's begin.",
+        "empty": "Pick a topic.",
         "show_age": True,
         "age_choices": ["8-10", "11-12"],
         "age_default": "11-12",
@@ -35,7 +35,7 @@ SEGMENTS = {
         "hero": "Bring a claim. I'll press.",
         "pill": "Questions first.",
         "cta": "Start thinking",
-        "empty": "Pick a topic, then Start thinking.",
+        "empty": "Pick a topic.",
         "show_age": True,
         "age_choices": ["13-14", "15-17"],
         "age_default": "13-14",
@@ -47,7 +47,7 @@ SEGMENTS = {
         "hero": "A messy question. No handed answer.",
         "pill": "Think it through.",
         "cta": "Start",
-        "empty": "Pick a topic, then Start.",
+        "empty": "Pick a topic.",
         "show_age": False,
         "age_choices": ["18-24"],
         "age_default": "18-24",
@@ -59,7 +59,7 @@ SEGMENTS = {
         "hero": "Clarify the decision. I ask. You decide.",
         "pill": "Clarity over noise.",
         "cta": "Begin",
-        "empty": "Choose a topic, then Begin.",
+        "empty": "Pick a topic.",
         "show_age": False,
         "age_choices": ["25-64"],
         "age_default": "25-64",
@@ -71,7 +71,7 @@ SEGMENTS = {
         "hero": "One question at a time. Clear words. No rush.",
         "pill": "Steady questions.",
         "cta": "Begin",
-        "empty": "Choose a topic, then Begin.",
+        "empty": "Pick a topic.",
         "show_age": False,
         "age_choices": ["65+"],
         "age_default": "65+",
@@ -200,16 +200,16 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
    MIDDLE: Soft clay / bubble (terracotta + cream)
    ============================================================ */
 #cq-shell.seg-middle {
-  --cq-bg: #f0e2d4; --cq-ink: #3a2a22; --cq-muted: #6b5346;
-  --cq-indigo: #c46f48; --cq-indigo-soft: #fff8f0;
-  --cq-teal: #a85736; --cq-teal-soft: #f5e6d6;
-  --cq-card: #fff9f2; --cq-line: rgba(139, 90, 60, 0.16);
+  --cq-bg: #f0e2d4; --cq-ink: #2c1f18; --cq-muted: #5a4338;
+  --cq-indigo: #b8623c; --cq-indigo-soft: #fff8f0;
+  --cq-teal: #8f4a2e; --cq-teal-soft: #f5e6d6;
+  --cq-card: #fff9f2; --cq-line: rgba(139, 90, 60, 0.28);
   --cq-shadow: 0 16px 40px rgba(139, 90, 60, 0.14);
   --cq-card-shadow: 0 8px 20px rgba(139, 90, 60, 0.10), inset 0 1px 0 rgba(255,255,255,.7);
   --cq-radius: 28px; --cq-btn-radius: 999px; --cq-card-radius: 24px;
   --cq-font-scale: 1.02; --cq-body: 1.02rem; --cq-tap: 52px;
   --cq-pad: 22px; --cq-gap: 14px; --cq-density: 18px;
-  --cq-land-min: 58px; --cq-land-radius: 28px; --cq-land-pad: 14px 18px; --cq-land-size: 1.06rem;
+  --cq-land-min: 68px; --cq-land-radius: 28px; --cq-land-pad: 14px 16px; --cq-land-size: 1.06rem;
   --cq-chip-radius: 999px; --cq-chip-pad: 8px 14px; --cq-chip-size: 0.88rem; --cq-label-size: 0.8rem;
   --cq-font: 'Nunito', ui-sans-serif, system-ui, sans-serif;
   --cq-display: Fraunces, Georgia, serif; --cq-max: 920px;
@@ -219,10 +219,10 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
     radial-gradient(ellipse 260px 200px at 5% 55%, rgba(196,112,74,.2), transparent 65%),
     radial-gradient(ellipse 180px 140px at 70% 90%, rgba(240,210,160,.35), transparent 60%),
     linear-gradient(180deg, #faf3ea 0%, #f0e2d4 100%);
-  border-color: rgba(139, 90, 60, 0.12);
+  border-color: rgba(139, 90, 60, 0.18);
   font-family: var(--cq-font) !important;
   color: var(--cq-ink) !important;
-  overflow: hidden;
+  overflow: visible;
 }
 #cq-shell.seg-middle::before {
   display: block;
@@ -257,18 +257,18 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
 }
 #cq-shell.seg-middle #cq-pill {
   background: #fff8f0 !important;
-  color: #8b5a3c !important;
-  border: none !important;
+  color: #6b3f28 !important;
+  border: 2px solid rgba(139,90,60,.25) !important;
   box-shadow: 0 6px 16px rgba(139,90,60,.12), inset 0 1px 0 #fff !important;
   font-weight: 800 !important;
 }
 #cq-shell.seg-middle #cq-disclosure,
 #cq-shell.seg-middle #cq-session-chip {
   background: #fff8f0 !important;
-  border: none !important;
+  border: 2px solid rgba(139,90,60,.22) !important;
   border-radius: 999px !important;
   box-shadow: 0 4px 14px rgba(139,90,60,.10) !important;
-  color: #6b5346 !important;
+  color: #3a2a22 !important;
 }
 #cq-shell.seg-middle #cq-session-chip::before { background: #e8b48a !important; }
 #cq-shell.seg-middle .cq-card {
@@ -316,8 +316,8 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
 #cq-shell.seg-middle .scroll-hide,
 #cq-shell.seg-middle #cq-age label {
   background: #fff8f0 !important;
-  color: #3a2a22 !important;
-  border: none !important;
+  color: #2c1f18 !important;
+  border: 2px solid rgba(139,90,60,.22) !important;
   border-radius: 999px !important;
   box-shadow: 0 6px 16px rgba(139,90,60,.10), inset 0 1px 0 #fff !important;
 }
@@ -330,28 +330,38 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
   box-shadow: 0 10px 22px rgba(180,90,40,.22), inset 0 1px 0 rgba(255,255,255,.35) !important;
 }
 #cq-shell.seg-middle button.primary,
+#cq-shell.seg-middle #cq-start,
 #cq-shell.seg-middle #cq-start button,
 #cq-shell.seg-middle #cq-composer button.primary {
   background: linear-gradient(145deg, #c46f48, #a85736) !important;
   color: #fffaf5 !important;
-  border: none !important;
+  border: 2px solid #8f4a2e !important;
   border-radius: 999px !important;
   box-shadow: 0 12px 28px rgba(168,87,54,.35), inset 0 1px 0 rgba(255,255,255,.25) !important;
   font-weight: 800 !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  height: auto !important;
+  min-height: var(--cq-tap) !important;
+  padding: 12px 20px !important;
+  line-height: 1.25 !important;
 }
 #cq-shell.seg-middle button.secondary {
   background: #fff8f0 !important;
-  color: #8b5a3c !important;
-  border: none !important;
+  color: #6b3f28 !important;
+  border: 2px solid rgba(139,90,60,.28) !important;
   border-radius: 999px !important;
   box-shadow: 0 6px 16px rgba(139,90,60,.1), inset 0 1px 0 #fff !important;
 }
 #cq-shell.seg-middle #cq-composer {
   background: #fff8f0 !important;
+  border: 2px solid rgba(139,90,60,.22) !important;
   border-radius: 999px !important;
-  padding: 6px 6px 6px 14px !important;
+  padding: 8px 8px 8px 14px !important;
   box-shadow: 0 8px 22px rgba(139,90,60,.12), inset 0 1px 0 #fff !important;
   gap: 8px !important;
+  overflow: visible !important;
+  align-items: stretch !important;
 }
 #cq-shell.seg-middle #cq-composer input,
 #cq-shell.seg-middle #cq-composer textarea,
@@ -392,7 +402,7 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
   --cq-radius: 0; --cq-btn-radius: 0; --cq-card-radius: 0;
   --cq-font-scale: 0.98; --cq-body: 0.95rem; --cq-tap: 52px;
   --cq-pad: 16px; --cq-gap: 12px; --cq-density: 14px;
-  --cq-land-min: 52px; --cq-land-radius: 0; --cq-land-pad: 12px 14px; --cq-land-size: 0.95rem;
+  --cq-land-min: 68px; --cq-land-radius: 0; --cq-land-pad: 12px 14px; --cq-land-size: 0.95rem;
   --cq-chip-radius: 0; --cq-chip-pad: 6px 10px; --cq-chip-size: 0.78rem; --cq-label-size: 0.72rem;
   --cq-font: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
   --cq-display: 'Space Mono', ui-monospace, monospace;
@@ -534,6 +544,7 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
   box-shadow: 4px 4px 0 #0a0a0a !important;
 }
 #cq-shell.seg-teens button.primary,
+#cq-shell.seg-teens #cq-start,
 #cq-shell.seg-teens #cq-start button,
 #cq-shell.seg-teens #cq-composer button.primary {
   background: #ff2d95 !important;
@@ -545,6 +556,12 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
   text-transform: uppercase;
   letter-spacing: -0.02em;
   font-weight: 700 !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  height: auto !important;
+  min-height: var(--cq-tap) !important;
+  padding: 12px 16px !important;
+  line-height: 1.2 !important;
 }
 #cq-shell.seg-teens button.secondary {
   background: #fff !important;
@@ -560,6 +577,8 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
   border-radius: 0 !important;
   gap: 0 !important;
   padding: 0 !important;
+  overflow: visible !important;
+  align-items: stretch !important;
 }
 #cq-shell.seg-teens #cq-composer input,
 #cq-shell.seg-teens #cq-composer textarea,
@@ -575,8 +594,14 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
   background: #0a0a0a !important;
   color: #ffe600 !important;
   box-shadow: none !important;
-  min-width: 88px !important;
+  min-width: 108px !important;
   border-radius: 0 !important;
+  padding: 12px 16px !important;
+  overflow: visible !important;
+  white-space: nowrap !important;
+  flex: 0 0 auto !important;
+  height: auto !important;
+  min-height: var(--cq-tap) !important;
 }
 #cq-shell.seg-teens #cq-wrap-card {
   background: #fff !important;
@@ -590,6 +615,13 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
   font-family: 'Space Mono', monospace !important;
   text-transform: uppercase;
   letter-spacing: -0.03em;
+  color: #0a0a0a !important;
+}
+#cq-shell.seg-teens #cq-empty,
+#cq-shell.seg-teens #cq-empty .cq-empty-body,
+#cq-shell.seg-teens label,
+#cq-shell.seg-teens .label-wrap span {
+  color: #0a0a0a !important;
 }
 #cq-shell.seg-teens #cq-phase-pill {
   background: #ffe600 !important;
@@ -606,16 +638,16 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
    EARLY ADULT: Glassmorphism (frosted, cyan/violet)
    ============================================================ */
 #cq-shell.seg-early_adult {
-  --cq-bg: #0b1220; --cq-ink: #e8eef8; --cq-muted: rgba(226,232,240,.65);
-  --cq-indigo: #38bdf8; --cq-indigo-soft: rgba(125,211,252,.18);
-  --cq-teal: #818cf8; --cq-teal-soft: rgba(129,140,248,.18);
-  --cq-card: rgba(255,255,255,.10); --cq-line: rgba(255,255,255,.22);
+  --cq-bg: #0b1220; --cq-ink: #f8fafc; --cq-muted: #cbd5e1;
+  --cq-indigo: #38bdf8; --cq-indigo-soft: rgba(125,211,252,.22);
+  --cq-teal: #a5b4fc; --cq-teal-soft: rgba(129,140,248,.22);
+  --cq-card: rgba(255,255,255,.14); --cq-line: rgba(255,255,255,.38);
   --cq-shadow: 0 12px 40px rgba(0,0,0,.25);
   --cq-card-shadow: 0 12px 40px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.25);
   --cq-radius: 22px; --cq-btn-radius: 999px; --cq-card-radius: 16px;
   --cq-font-scale: 1; --cq-body: 1rem; --cq-tap: 52px;
   --cq-pad: 20px; --cq-gap: 14px; --cq-density: 18px;
-  --cq-land-min: 56px; --cq-land-radius: 16px; --cq-land-pad: 15px 16px; --cq-land-size: 1rem;
+  --cq-land-min: 68px; --cq-land-radius: 16px; --cq-land-pad: 14px 16px; --cq-land-size: 1rem;
   --cq-chip-radius: 999px; --cq-chip-pad: 6px 12px; --cq-chip-size: 0.8rem; --cq-label-size: 0.74rem;
   --cq-font: 'Inter', ui-sans-serif, system-ui, sans-serif;
   --cq-display: 'Inter', ui-sans-serif, system-ui, sans-serif;
@@ -635,7 +667,7 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
   font-family: var(--cq-display) !important;
   font-weight: 600 !important;
   letter-spacing: 0.04em;
-  color: rgba(255,255,255,.7) !important;
+  color: #e2e8f0 !important;
   font-size: 0.85rem !important;
 }
 #cq-shell.seg-early_adult #cq-brand p {
@@ -648,8 +680,8 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
 }
 #cq-shell.seg-early_adult #cq-pill {
   background: rgba(125,211,252,.18) !important;
-  color: #7dd3fc !important;
-  border: 1px solid rgba(125,211,252,.35) !important;
+  color: #e0f2fe !important;
+  border: 2px solid rgba(125,211,252,.55) !important;
   border-radius: 999px !important;
   box-shadow: none !important;
   font-weight: 600 !important;
@@ -668,25 +700,25 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
 #cq-shell.seg-early_adult #cq-disclosure {
   background: rgba(255,255,255,.06) !important;
   border: 1px solid rgba(255,255,255,.14) !important;
-  color: rgba(226,232,240,.65) !important;
+  color: #e2e8f0 !important;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: none !important;
 }
 #cq-shell.seg-early_adult #cq-session-chip {
-  background: rgba(255,255,255,.10) !important;
-  border: 1px solid rgba(255,255,255,.22) !important;
+  background: rgba(255,255,255,.14) !important;
+  border: 2px solid rgba(255,255,255,.32) !important;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  color: #e2e8f0 !important;
+  color: #f8fafc !important;
   box-shadow: inset 0 1px 0 rgba(255,255,255,.2) !important;
 }
 #cq-shell.seg-early_adult #cq-session-chip::before { background: #38bdf8 !important; }
 #cq-shell.seg-early_adult .cq-card {
-  background: rgba(255,255,255,.08) !important;
+  background: rgba(255,255,255,.12) !important;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255,255,255,.16) !important;
+  border: 2px solid rgba(255,255,255,.28) !important;
   border-radius: 16px !important;
   box-shadow: 0 8px 24px rgba(0,0,0,.2), inset 0 1px 0 rgba(255,255,255,.18) !important;
   color: #e2e8f0 !important;
@@ -707,8 +739,8 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
   background: rgba(255,255,255,.10) !important;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  color: #f0f9ff !important;
-  border: 1px solid rgba(255,255,255,.18) !important;
+  color: #f8fafc !important;
+  border: 2px solid rgba(255,255,255,.28) !important;
   border-radius: 16px !important;
   box-shadow: inset 0 1px 0 rgba(255,255,255,.2) !important;
 }
@@ -716,9 +748,9 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
 #cq-shell.seg-early_adult #cq-chatbot [data-testid="user"],
 #cq-shell.seg-early_adult .message.user,
 #cq-shell.seg-early_adult .bubble.user {
-  background: rgba(125,211,252,.18) !important;
-  color: #f0f9ff !important;
-  border: 1px solid rgba(125,211,252,.45) !important;
+  background: rgba(125,211,252,.28) !important;
+  color: #f8fafc !important;
+  border: 2px solid rgba(125,211,252,.6) !important;
   border-radius: 16px !important;
   box-shadow: 0 0 0 1px rgba(125,211,252,.2), 0 8px 24px rgba(14,165,233,.15) !important;
 }
@@ -729,9 +761,9 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
 #cq-shell.seg-early_adult .secondary-wrap,
 #cq-shell.seg-early_adult .scroll-hide,
 #cq-shell.seg-early_adult #cq-age label {
-  background: rgba(255,255,255,.08) !important;
-  color: #e2e8f0 !important;
-  border: 1px solid rgba(255,255,255,.16) !important;
+  background: rgba(255,255,255,.12) !important;
+  color: #f8fafc !important;
+  border: 2px solid rgba(255,255,255,.32) !important;
   border-radius: 16px !important;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -744,31 +776,40 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
   color: #f0f9ff !important;
 }
 #cq-shell.seg-early_adult button.primary,
+#cq-shell.seg-early_adult #cq-start,
 #cq-shell.seg-early_adult #cq-start button,
 #cq-shell.seg-early_adult #cq-composer button.primary {
   background: linear-gradient(135deg, #38bdf8, #818cf8) !important;
   color: #0b1220 !important;
-  border: none !important;
+  border: 2px solid rgba(224,242,254,.7) !important;
   border-radius: 999px !important;
   box-shadow: 0 12px 32px rgba(56,189,248,.35), inset 0 1px 0 rgba(255,255,255,.4) !important;
-  font-weight: 650 !important;
+  font-weight: 700 !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  height: auto !important;
+  min-height: var(--cq-tap) !important;
+  padding: 12px 20px !important;
+  line-height: 1.25 !important;
 }
 #cq-shell.seg-early_adult button.secondary {
-  background: rgba(255,255,255,.08) !important;
-  color: #e2e8f0 !important;
-  border: 1px solid rgba(255,255,255,.2) !important;
+  background: rgba(255,255,255,.12) !important;
+  color: #f8fafc !important;
+  border: 2px solid rgba(255,255,255,.35) !important;
   border-radius: 999px !important;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
 #cq-shell.seg-early_adult #cq-composer {
-  background: rgba(255,255,255,.08) !important;
-  border: 1px solid rgba(255,255,255,.16) !important;
+  background: rgba(255,255,255,.12) !important;
+  border: 2px solid rgba(255,255,255,.32) !important;
   border-radius: 999px !important;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  padding: 6px 6px 6px 14px !important;
+  padding: 8px 8px 8px 14px !important;
   box-shadow: inset 0 1px 0 rgba(255,255,255,.15) !important;
+  overflow: visible !important;
+  align-items: stretch !important;
 }
 #cq-shell.seg-early_adult #cq-composer input,
 #cq-shell.seg-early_adult #cq-composer textarea,
@@ -776,7 +817,7 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
-  color: #e2e8f0 !important;
+  color: #f8fafc !important;
 }
 #cq-shell.seg-early_adult #cq-wrap-card {
   background: rgba(255,255,255,.10) !important;
@@ -791,11 +832,11 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
 #cq-shell.seg-early_adult #cq-wrap-card .cq-pride,
 #cq-shell.seg-early_adult label,
 #cq-shell.seg-early_adult .label-wrap span {
-  color: #e8eef8 !important;
+  color: #f8fafc !important;
 }
 #cq-shell.seg-early_adult #cq-empty .cq-empty-body,
 #cq-shell.seg-early_adult #cq-session-chip .cq-chip-meta {
-  color: rgba(226,232,240,.65) !important;
+  color: #cbd5e1 !important;
 }
 #cq-shell.seg-early_adult #cq-empty strong,
 #cq-shell.seg-early_adult #cq-land-title,
@@ -804,14 +845,14 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
 }
 #cq-shell.seg-early_adult #cq-phase-pill {
   background: rgba(125,211,252,.12) !important;
-  border: 1px solid rgba(125,211,252,.3) !important;
-  color: #7dd3fc !important;
+  color: #e0f2fe !important;
+  border: 2px solid rgba(125,211,252,.5) !important;
 }
 #cq-shell.seg-early_adult #cq-change-seg button,
 #cq-shell.seg-early_adult button#cq-change-seg,
 #cq-shell.seg-early_adult .accordion > .label-wrap,
 #cq-shell.seg-early_adult .accordion .label-wrap {
-  color: rgba(226,232,240,.7) !important;
+  color: #cbd5e1 !important;
 }
 .gradio-container:has(#cq-shell.seg-early_adult) {
   background: #0b1220 !important;
@@ -821,7 +862,7 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
    ADULT: Swiss flat (B/W + red hairlines)
    ============================================================ */
 #cq-shell.seg-adult {
-  --cq-bg: #fafafa; --cq-ink: #111; --cq-muted: #555;
+  --cq-bg: #fafafa; --cq-ink: #111; --cq-muted: #333;
   --cq-indigo: #111; --cq-indigo-soft: #f0f0f0;
   --cq-teal: #e11d48; --cq-teal-soft: #fff1f2;
   --cq-card: #ffffff; --cq-line: #111;
@@ -829,7 +870,7 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
   --cq-radius: 0; --cq-btn-radius: 0; --cq-card-radius: 0;
   --cq-font-scale: 0.98; --cq-body: 0.95rem; --cq-tap: 48px;
   --cq-pad: 18px; --cq-gap: 10px; --cq-density: 12px;
-  --cq-land-min: 52px; --cq-land-radius: 0; --cq-land-pad: 14px 0; --cq-land-size: 0.95rem;
+  --cq-land-min: 68px; --cq-land-radius: 0; --cq-land-pad: 14px 12px; --cq-land-size: 0.95rem;
   --cq-chip-radius: 0; --cq-chip-pad: 5px 0; --cq-chip-size: 0.76rem; --cq-label-size: 0.7rem;
   --cq-font: 'Inter', Helvetica, Arial, sans-serif;
   --cq-display: 'Inter', Helvetica, Arial, sans-serif;
@@ -881,17 +922,17 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
   border-top: 1px solid #ddd !important;
   border-radius: 0 !important;
   box-shadow: none !important;
-  color: #555 !important;
+  color: #333 !important;
   padding: 14px 0 0 !important;
 }
 #cq-shell.seg-adult #cq-session-chip {
   background: transparent !important;
   border: none !important;
-  border-bottom: 1px solid #111 !important;
+  border-bottom: 2px solid #111 !important;
   border-radius: 0 !important;
   box-shadow: none !important;
   padding: 0 0 10px !important;
-  color: #666 !important;
+  color: #111 !important;
   font-weight: 500 !important;
 }
 #cq-shell.seg-adult #cq-session-chip::before { display: none !important; }
@@ -977,22 +1018,29 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
   border-color: #111 !important;
 }
 #cq-shell.seg-adult button.primary,
+#cq-shell.seg-adult #cq-start,
 #cq-shell.seg-adult #cq-start button,
 #cq-shell.seg-adult #cq-composer button.primary {
   background: #111 !important;
   color: #fff !important;
-  border: none !important;
+  border: 2px solid #111 !important;
   border-radius: 0 !important;
   box-shadow: none !important;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   font-size: 0.88rem !important;
   font-weight: 600 !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  height: auto !important;
+  min-height: var(--cq-tap) !important;
+  padding: 12px 18px !important;
+  line-height: 1.25 !important;
 }
 #cq-shell.seg-adult button.secondary {
   background: transparent !important;
   color: #111 !important;
-  border: 1px solid #111 !important;
+  border: 2px solid #111 !important;
   border-radius: 0 !important;
   box-shadow: none !important;
   text-transform: uppercase;
@@ -1003,8 +1051,10 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
   border-top: 2px solid #111 !important;
   border-radius: 0 !important;
   padding-top: 12px !important;
-  gap: 0 !important;
+  gap: 8px !important;
   background: transparent !important;
+  overflow: visible !important;
+  align-items: stretch !important;
 }
 #cq-shell.seg-adult #cq-composer input,
 #cq-shell.seg-adult #cq-composer textarea,
@@ -1042,10 +1092,10 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
    UNHURRIED: Soft neumorphism (sage, large type)
    ============================================================ */
 #cq-shell.seg-unhurried {
-  --cq-bg: #e6e9e1; --cq-ink: #2f3d32; --cq-muted: #4a6354;
-  --cq-indigo: #3d5244; --cq-indigo-soft: #e6e9e1;
-  --cq-teal: #4a6354; --cq-teal-soft: #dfe4d8;
-  --cq-card: #e6e9e1; --cq-line: transparent;
+  --cq-bg: #e6e9e1; --cq-ink: #1f2c24; --cq-muted: #2f3d32;
+  --cq-indigo: #2f3d32; --cq-indigo-soft: #e6e9e1;
+  --cq-teal: #2f3d32; --cq-teal-soft: #dfe4d8;
+  --cq-card: #e6e9e1; --cq-line: rgba(31,44,36,.22);
   --cq-shadow: 8px 8px 18px #c4cbc0, -8px -8px 18px #ffffff;
   --cq-card-shadow: 7px 7px 16px #c4cbc0, -7px -7px 16px #ffffff;
   --cq-radius: 22px; --cq-btn-radius: 999px; --cq-card-radius: 20px;
@@ -1088,8 +1138,8 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
 }
 #cq-shell.seg-unhurried #cq-pill {
   background: #e6e9e1 !important;
-  color: #4a6354 !important;
-  border: none !important;
+  color: #1f2c24 !important;
+  border: 2px solid rgba(31,44,36,.2) !important;
   border-radius: 999px !important;
   box-shadow: 6px 6px 14px #c4cbc0, -6px -6px 14px #ffffff !important;
   font-size: 0.95rem !important;
@@ -1099,10 +1149,10 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
 #cq-shell.seg-unhurried #cq-disclosure,
 #cq-shell.seg-unhurried #cq-session-chip {
   background: #e6e9e1 !important;
-  border: none !important;
+  border: 2px solid rgba(31,44,36,.2) !important;
   border-radius: 20px !important;
   box-shadow: 6px 6px 14px #c4cbc0, -6px -6px 14px #ffffff !important;
-  color: #4a6354 !important;
+  color: #1f2c24 !important;
 }
 #cq-shell.seg-unhurried #cq-session-chip::before { background: #4a6354 !important; }
 #cq-shell.seg-unhurried label,
@@ -1176,29 +1226,37 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
   font-weight: 600 !important;
 }
 #cq-shell.seg-unhurried button.primary,
+#cq-shell.seg-unhurried #cq-start,
 #cq-shell.seg-unhurried #cq-start button,
 #cq-shell.seg-unhurried #cq-composer button.primary {
   background: #e6e9e1 !important;
-  color: #2f3d32 !important;
-  border: none !important;
+  color: #1f2c24 !important;
+  border: 2px solid rgba(31,44,36,.22) !important;
   border-radius: 999px !important;
   box-shadow: 8px 8px 18px #c4cbc0, -8px -8px 18px #ffffff !important;
   min-height: 60px !important;
-  font-weight: 650 !important;
+  font-weight: 700 !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  height: auto !important;
+  padding: 14px 22px !important;
+  line-height: 1.25 !important;
 }
 #cq-shell.seg-unhurried button.secondary {
   background: #e6e9e1 !important;
-  color: #4a6354 !important;
-  border: none !important;
+  color: #1f2c24 !important;
+  border: 2px solid rgba(31,44,36,.22) !important;
   border-radius: 999px !important;
   box-shadow: 6px 6px 14px #c4cbc0, -6px -6px 14px #ffffff !important;
 }
 #cq-shell.seg-unhurried #cq-composer {
   background: #e6e9e1 !important;
-  border: none !important;
+  border: 2px solid rgba(31,44,36,.2) !important;
   border-radius: 999px !important;
   box-shadow: 8px 8px 18px #c4cbc0, -8px -8px 18px #ffffff !important;
   padding: 8px 8px 8px 18px !important;
+  overflow: visible !important;
+  align-items: stretch !important;
 }
 #cq-shell.seg-unhurried #cq-composer input,
 #cq-shell.seg-unhurried #cq-composer textarea,
@@ -1221,8 +1279,8 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
 }
 #cq-shell.seg-unhurried #cq-phase-pill {
   background: #e6e9e1 !important;
-  border: none !important;
-  color: #4a6354 !important;
+  border: 2px solid rgba(31,44,36,.2) !important;
+  color: #1f2c24 !important;
   box-shadow: 5px 5px 12px #c4cbc0, -5px -5px 12px #ffffff !important;
   font-size: 1rem !important;
 }
@@ -1267,7 +1325,7 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
   margin: 0 0 8px;
 }
 #cq-land-sub {
-  color: #6b5346;
+  color: #3a2a22;
   font-size: 1.02rem;
   font-weight: 600;
   margin: 0;
@@ -1277,13 +1335,16 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
 #cq-land button,
 #cq-land .cq-land-chip {
   width: 100% !important;
-  min-height: var(--cq-land-min) !important;
+  min-height: max(68px, var(--cq-land-min)) !important;
+  height: auto !important;
+  max-height: none !important;
   margin: 0 !important;
   border-radius: var(--cq-land-radius) !important;
   font-weight: 700 !important;
   font-size: var(--cq-land-size) !important;
   text-align: left !important;
   justify-content: flex-start !important;
+  align-items: flex-start !important;
   padding: var(--cq-land-pad) !important;
   transition:
     transform .18s var(--cq-ease),
@@ -1293,7 +1354,22 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
     color .18s var(--cq-ease) !important;
   box-shadow: var(--cq-card-shadow) !important;
   position: relative !important;
-  overflow: hidden !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  line-height: 1.25 !important;
+  text-overflow: clip !important;
+  flex-shrink: 0 !important;
+}
+#cq-land button span,
+#cq-land .cq-land-chip span,
+#cq-land button > * {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  height: auto !important;
+  max-height: none !important;
+  line-height: 1.25 !important;
+  flex-shrink: 1 !important;
 }
 #cq-land button:hover {
   transform: translateY(-2px) !important;
@@ -1311,14 +1387,18 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
 #cq-seg-middle {
   border-radius: 28px 32px 26px 30px !important;
   background: linear-gradient(145deg, #f3d9c4, #e8c4a8) !important;
-  color: #4a2e20 !important;
-  border: none !important;
+  color: #3a2a22 !important;
+  border: 2px solid rgba(74,46,32,.25) !important;
   box-shadow: 0 10px 24px rgba(139,90,60,.18), inset 0 1px 0 rgba(255,255,255,.55) !important;
   font-family: 'Nunito', sans-serif !important;
   font-weight: 800 !important;
   text-align: left !important;
   justify-content: center !important;
-  min-height: 64px !important;
+  min-height: 72px !important;
+  height: auto !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  line-height: 1.25 !important;
 }
 #cq-seg-middle::before {
   content: "" !important;
@@ -1348,7 +1428,11 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
   text-transform: uppercase;
   letter-spacing: -0.03em;
   transform: rotate(-0.4deg);
-  min-height: 64px !important;
+  min-height: 72px !important;
+  height: auto !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  line-height: 1.2 !important;
 }
 #cq-seg-teens:hover,
 #cq-seg-teens:focus-visible {
@@ -1359,17 +1443,21 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
 }
 #cq-seg-early_adult {
   border-radius: 18px !important;
-  background: linear-gradient(135deg, rgba(125,211,252,.25), rgba(255,255,255,.35)) !important;
+  background: linear-gradient(135deg, rgba(14,165,233,.35), rgba(255,255,255,.55)) !important;
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  color: #1e293b !important;
-  border: 1px solid rgba(255,255,255,.65) !important;
+  color: #0f172a !important;
+  border: 2px solid rgba(15,23,42,.35) !important;
   box-shadow: 0 8px 32px rgba(40,70,120,.10), inset 0 1px 0 rgba(255,255,255,.7) !important;
   font-family: 'Inter', system-ui, sans-serif !important;
-  font-weight: 600 !important;
+  font-weight: 650 !important;
   text-align: left !important;
   justify-content: center !important;
-  min-height: 64px !important;
+  min-height: 72px !important;
+  height: auto !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  line-height: 1.25 !important;
   letter-spacing: -0.02em;
 }
 #cq-seg-early_adult:hover,
@@ -1382,14 +1470,18 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
   border-radius: 0 !important;
   background: #fff !important;
   color: #111 !important;
-  border: 1px solid #111 !important;
+  border: 2px solid #111 !important;
   border-left: 4px solid #e11d48 !important;
   box-shadow: none !important;
   font-family: 'Inter', Helvetica, Arial, sans-serif !important;
   font-weight: 600 !important;
-  min-height: 64px !important;
+  min-height: 72px !important;
+  height: auto !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  line-height: 1.25 !important;
   letter-spacing: -0.03em;
-  padding-left: 14px !important;
+  padding: 14px 12px !important;
 }
 #cq-seg-adult:hover,
 #cq-seg-adult:focus-visible {
@@ -1402,13 +1494,17 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
   grid-column: 1 / -1 !important;
   border-radius: 22px !important;
   background: #e8ebe3 !important;
-  color: #2f3d32 !important;
-  border: none !important;
+  color: #1f2c24 !important;
+  border: 2px solid rgba(31,44,36,.22) !important;
   box-shadow: 8px 8px 18px #c5cbc0, -8px -8px 18px #ffffff !important;
   font-family: Literata, Georgia, serif !important;
   font-weight: 600 !important;
   font-size: 1.12rem !important;
-  min-height: 72px !important;
+  min-height: 76px !important;
+  height: auto !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  line-height: 1.3 !important;
   margin-top: 2px !important;
 }
 #cq-seg-unhurried:hover,
@@ -1564,12 +1660,26 @@ button:focus-visible {
   outline: none !important;
   box-shadow: var(--cq-focus) !important;
 }
-button.primary, #cq-start button {
+button.primary, #cq-start, #cq-start button {
   background: linear-gradient(135deg, var(--cq-indigo) 0%, color-mix(in srgb, var(--cq-indigo) 72%, var(--cq-teal)) 55%, var(--cq-teal) 140%) !important;
   color: #fff !important;
-  border: none !important;
+  border: 2px solid color-mix(in srgb, var(--cq-indigo) 55%, #000) !important;
   box-shadow: 0 12px 28px color-mix(in srgb, var(--cq-indigo) 26%, transparent) !important;
   width: 100% !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  height: auto !important;
+  min-height: var(--cq-tap) !important;
+  padding: 12px 20px !important;
+  line-height: 1.25 !important;
+  flex-shrink: 0 !important;
+  text-overflow: clip !important;
+}
+button.primary span, #cq-start span {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  line-height: 1.25 !important;
 }
 button.secondary {
   background: transparent !important;
@@ -1623,6 +1733,8 @@ button.secondary:hover {
   text-align: center;
   padding: 22px 16px 6px;
   color: var(--cq-muted);
+  overflow: visible;
+  max-width: 100%;
 }
 #cq-empty .cq-empty-mark {
   width: 36px; height: 3px; border-radius: 999px;
@@ -1741,13 +1853,25 @@ button.secondary:hover {
   gap: 10px !important;
   align-items: stretch !important;
   margin-top: 8px !important;
+  overflow: visible !important;
 }
-#cq-composer .form, #cq-composer .block { flex: 1 !important; }
+#cq-composer .form, #cq-composer .block { flex: 1 1 auto !important; min-width: 0 !important; }
 #cq-composer button.primary {
   width: auto !important;
-  min-width: 96px !important;
-  padding: 0 18px !important;
+  min-width: 104px !important;
+  padding: 10px 18px !important;
   box-shadow: 0 8px 18px color-mix(in srgb, var(--cq-indigo) 22%, transparent) !important;
+  overflow: visible !important;
+  white-space: nowrap !important;
+  height: auto !important;
+  min-height: var(--cq-tap) !important;
+  flex: 0 0 auto !important;
+  align-self: stretch !important;
+  text-overflow: clip !important;
+}
+#cq-composer button.primary span {
+  white-space: nowrap !important;
+  overflow: visible !important;
 }
 
 #cq-change-seg button,
