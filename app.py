@@ -16,7 +16,7 @@ from socratic_engine import (
 
 AGE_CHOICES = ["8-10", "11-12", "13-14"]
 TOPICS = topic_titles() + ["I have my own question"]
-DISCLOSURE = "I am an AI that helps you think by asking questions."
+DISCLOSURE = "I'm an AI. I help you think by asking questions — not by giving the answer."
 OWN_QUESTION = "I have my own question"
 
 # Calm 2025 learning-app shell — phone-first, soft premium education (not Gradio chrome)
@@ -270,6 +270,37 @@ button.secondary {
   margin-top: 8px !important;
 }
 
+/* Accordion / markdown contrast (Gradio often leaves white text) */
+.accordion,
+.accordion *,
+.accordion .prose,
+.accordion .prose *,
+.accordion p,
+.accordion li,
+.accordion span,
+.accordion strong,
+.accordion em,
+.markdown,
+.markdown *,
+.prose,
+.prose p,
+.prose li,
+.prose strong,
+.prose em,
+.prose a {
+  color: var(--cq-ink) !important;
+}
+.accordion .prose em,
+.prose em {
+  color: var(--cq-muted) !important;
+}
+.accordion label,
+.accordion .label-wrap span,
+.accordion button,
+.accordion .icon-wrap {
+  color: var(--cq-ink) !important;
+}
+
 #cq-composer {
   display: flex;
   gap: 8px;
@@ -301,19 +332,19 @@ def _fmt_skills(skills: dict) -> str:
         "reflection": "💭",
     }
     lines = [f"- {icons.get(k, '⭐')} **{k.title()}** · {v}" for k, v in skills.items()]
-    return "### Thinking powers\n" + "\n".join(lines)
+    return "### Skills you\'re building\n" + "\n".join(lines)
 
 
 def _fmt_phase(phase: str, index: int) -> str:
     track = "".join("●" if i <= index else "○" for i in range(6))
-    return f"### Quest step\n**{phase}**\n\n`{track}`  {index + 1}/6"
+    return f"### Where we are\n**{phase}**\n\n`{track}`  {index + 1}/6"
 
 
 def start_session(age: str, topic: str, custom: str):
     if topic.startswith("I have my own") and custom.strip():
         topic_use = custom.strip()
     elif topic.startswith("I have my own"):
-        topic_use = "What should we think carefully about today?"
+        topic_use = "What curious thing should we dig into today?"
     else:
         topic_use = topic
 
@@ -327,7 +358,7 @@ def start_session(age: str, topic: str, custom: str):
         _fmt_phase(st.phase, st.phase_index),
         _fmt_skills(st.skills),
         teacher_summary(st),
-        f"**Quest:** {topic_use}  ·  ages **{age}**\n\n_{DISCLOSURE}_",
+        f"**Exploring:** {topic_use}  ·  ages **{age}**\n\n_{DISCLOSURE}_",
         gr.update(visible=False),  # hide empty state once quest starts
     )
 
@@ -394,9 +425,9 @@ def build_demo() -> gr.Blocks:
                   <div id="cq-brand-row">
                     <div id="cq-brand">
                       <h1>CritiQuest</h1>
-                      <p>A calm thinking coach for ages 8–14. Pick a quest — I’ll ask questions so <b>you</b> figure it out.</p>
+                      <p>For ages 8–14. Pick a topic — I’ll ask questions so <b>you</b> do the thinking.</p>
                     </div>
-                    <div id="cq-pill">Questions over answers</div>
+                    <div id="cq-pill">I ask. You think.</div>
                   </div>
                 </div>
                 """
@@ -408,29 +439,29 @@ def build_demo() -> gr.Blocks:
                 age = gr.Radio(
                     AGE_CHOICES,
                     value="11-12",
-                    label="Your age group",
+                    label="How old are you?",
                     elem_id="cq-age",
                 )
                 topic = gr.Dropdown(
                     TOPICS,
                     value=TOPICS[0],
-                    label="Choose a quest",
+                    label="What should we explore?",
                 )
                 custom = gr.Textbox(
-                    label="Your own question",
-                    placeholder="Why do people believe rumors?",
+                    label="Type your question",
+                    placeholder="Example: Why do people believe rumors?",
                     lines=1,
                     visible=False,
                 )
                 header = gr.Markdown("")
-                start_btn = gr.Button("Start quest", variant="primary", elem_id="cq-start")
+                start_btn = gr.Button("Let's begin", variant="primary", elem_id="cq-start")
 
             empty = gr.HTML(
                 """
                 <div id="cq-empty">
                   <strong>Ready when you are</strong>
-                  Pick your age and a quest, then tap <b>Start quest</b>.
-                  I’ll ask curious questions — you bring the ideas.
+                  Choose your age and a topic, then tap <b>Let's begin</b>.
+                  You share ideas. I ask the next good question.
                 </div>
                 """,
                 visible=True,
@@ -438,7 +469,7 @@ def build_demo() -> gr.Blocks:
 
             with gr.Column(elem_classes=["cq-card"]):
                 chatbot = gr.Chatbot(
-                    label="Conversation",
+                    label="Our chat",
                     height=420,
                     type="messages",
                     elem_id="cq-chatbot",
@@ -448,29 +479,29 @@ def build_demo() -> gr.Blocks:
                 )
                 with gr.Row(elem_id="cq-composer"):
                     msg = gr.Textbox(
-                        label="Your thought",
-                        placeholder="Share an idea…",
+                        label="Your idea",
+                        placeholder="Type what you're thinking…",
                         scale=5,
                         container=True,
                         show_label=True,
                     )
-                    send = gr.Button("Send", variant="secondary", scale=1)
+                    send = gr.Button("Reply", variant="secondary", scale=1)
 
             with gr.Row(elem_id="cq-stats"):
                 with gr.Column(elem_classes=["cq-card"], elem_id="cq-side", scale=1):
-                    phase_md = gr.Markdown("### Quest step\nPress **Start quest**.")
+                    phase_md = gr.Markdown("### Where we are\nTap **Let's begin** to start.")
                 with gr.Column(elem_classes=["cq-card"], scale=1):
-                    skills_md = gr.Markdown("### Thinking powers\n—")
+                    skills_md = gr.Markdown("### Skills you're building\n—")
 
             with gr.Column(elem_classes=["cq-card"]):
                 teacher_toggle = gr.Checkbox(
-                    label="Teacher view",
+                    label="Grown-up view",
                     value=False,
-                    info="For grown-ups reviewing the chat",
+                    info="For teachers or parents checking the chat",
                 )
                 teacher_md = gr.Markdown(visible=False)
 
-            with gr.Accordion("All quest ideas", open=False):
+            with gr.Accordion("More topics to try", open=False):
                 gr.Markdown(
                     "\n".join(f"- **{t['title']}** — _{t['domain']}_" for t in TOPIC_SEEDS)
                 )
