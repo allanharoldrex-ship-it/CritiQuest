@@ -99,7 +99,7 @@ CUSTOM_CSS = """
 :root {
   --cq-bg: #efe6da;
   --cq-ink: #2c1f18;
-  --cq-muted: #6b5346;
+  --cq-muted: #3a2a22;
   --cq-card: #fff9f2;
   --cq-line: rgba(139, 90, 60, 0.14);
   --cq-indigo: #c46f48;
@@ -200,7 +200,7 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
    MIDDLE: Soft clay / bubble (terracotta + cream)
    ============================================================ */
 #cq-shell.seg-middle {
-  --cq-bg: #f0e2d4; --cq-ink: #2c1f18; --cq-muted: #5a4338;
+  --cq-bg: #f0e2d4; --cq-ink: #2c1f18; --cq-muted: #3a2a22;
   --cq-indigo: #b8623c; --cq-indigo-soft: #fff8f0;
   --cq-teal: #8f4a2e; --cq-teal-soft: #f5e6d6;
   --cq-card: #fff9f2; --cq-line: rgba(139, 90, 60, 0.28);
@@ -257,7 +257,7 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
 }
 #cq-shell.seg-middle #cq-pill {
   background: #fff8f0 !important;
-  color: #6b3f28 !important;
+  color: #3a2a22 !important;
   border: 2px solid rgba(139,90,60,.25) !important;
   box-shadow: 0 6px 16px rgba(139,90,60,.12), inset 0 1px 0 #fff !important;
   font-weight: 800 !important;
@@ -348,7 +348,7 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
 }
 #cq-shell.seg-middle button.secondary {
   background: #fff8f0 !important;
-  color: #6b3f28 !important;
+  color: #3a2a22 !important;
   border: 2px solid rgba(139,90,60,.28) !important;
   border-radius: 999px !important;
   box-shadow: 0 6px 16px rgba(139,90,60,.1), inset 0 1px 0 #fff !important;
@@ -638,7 +638,7 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
    EARLY ADULT: Glassmorphism (frosted, cyan/violet)
    ============================================================ */
 #cq-shell.seg-early_adult {
-  --cq-bg: #0b1220; --cq-ink: #f8fafc; --cq-muted: #cbd5e1;
+  --cq-bg: #0b1220; --cq-ink: #f8fafc; --cq-muted: #e2e8f0;
   --cq-indigo: #38bdf8; --cq-indigo-soft: rgba(125,211,252,.22);
   --cq-teal: #a5b4fc; --cq-teal-soft: rgba(129,140,248,.22);
   --cq-card: rgba(255,255,255,.14); --cq-line: rgba(255,255,255,.38);
@@ -836,7 +836,7 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
 }
 #cq-shell.seg-early_adult #cq-empty .cq-empty-body,
 #cq-shell.seg-early_adult #cq-session-chip .cq-chip-meta {
-  color: #cbd5e1 !important;
+  color: #e2e8f0 !important;
 }
 #cq-shell.seg-early_adult #cq-empty strong,
 #cq-shell.seg-early_adult #cq-land-title,
@@ -852,7 +852,7 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
 #cq-shell.seg-early_adult button#cq-change-seg,
 #cq-shell.seg-early_adult .accordion > .label-wrap,
 #cq-shell.seg-early_adult .accordion .label-wrap {
-  color: #cbd5e1 !important;
+  color: #e2e8f0 !important;
 }
 .gradio-container:has(#cq-shell.seg-early_adult) {
   background: #0b1220 !important;
@@ -862,7 +862,7 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
    ADULT: Swiss flat (B/W + red hairlines)
    ============================================================ */
 #cq-shell.seg-adult {
-  --cq-bg: #fafafa; --cq-ink: #111; --cq-muted: #333;
+  --cq-bg: #fafafa; --cq-ink: #111; --cq-muted: #1a1a1a;
   --cq-indigo: #111; --cq-indigo-soft: #f0f0f0;
   --cq-teal: #e11d48; --cq-teal-soft: #fff1f2;
   --cq-card: #ffffff; --cq-line: #111;
@@ -922,7 +922,7 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
   border-top: 1px solid #ddd !important;
   border-radius: 0 !important;
   box-shadow: none !important;
-  color: #333 !important;
+  color: #1a1a1a !important;
   padding: 14px 0 0 !important;
 }
 #cq-shell.seg-adult #cq-session-chip {
@@ -1086,13 +1086,13 @@ label.svelte-1b6s6s4 .svelte-1b6s6s4 { background: transparent !important; }
   font-size: 0.72rem !important;
   padding: 0 0 8px !important;
 }
-#cq-shell.seg-adult #cq-phase-pill > span:first-child { color: #666 !important; }
+#cq-shell.seg-adult #cq-phase-pill > span:first-child { color: #222 !important; }
 
 /* ============================================================
    UNHURRIED: Soft neumorphism (sage, large type)
    ============================================================ */
 #cq-shell.seg-unhurried {
-  --cq-bg: #e6e9e1; --cq-ink: #1f2c24; --cq-muted: #2f3d32;
+  --cq-bg: #e6e9e1; --cq-ink: #1f2c24; --cq-muted: #1f2c24;
   --cq-indigo: #2f3d32; --cq-indigo-soft: #e6e9e1;
   --cq-teal: #2f3d32; --cq-teal-soft: #dfe4d8;
   --cq-card: #e6e9e1; --cq-line: rgba(31,44,36,.22);
@@ -1599,6 +1599,10 @@ input, textarea, select, .wrap-inner, .secondary-wrap, .scroll-hide {
   color: var(--cq-ink) !important;
   min-height: var(--cq-tap) !important;
   font-size: calc(1rem * var(--cq-font-scale)) !important;
+}
+input::placeholder, textarea::placeholder {
+  color: color-mix(in srgb, var(--cq-muted) 72%, var(--cq-ink)) !important;
+  opacity: 1 !important;
 }
 input:focus-visible, textarea:focus-visible, select:focus-visible {
   outline: none !important;
@@ -2202,7 +2206,7 @@ THEME = gr.themes.Base(
     body_text_color="#1c2434",
     block_background_fill="#ffffff",
     block_border_color="rgba(28,36,52,0.08)",
-    block_label_text_color="#5b6578",
+    block_label_text_color="#2c1f18",
     border_color_primary="rgba(28,36,52,0.08)",
     button_primary_background_fill="#4f46e5",
     button_primary_text_color="#ffffff",
